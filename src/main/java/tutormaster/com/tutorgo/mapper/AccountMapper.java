@@ -2,7 +2,6 @@ package tutorgo.com.tutorgo.mapper;
 
 import tutorgo.com.tutorgo.dto.request.CreateAccountRequest;
 import tutorgo.com.tutorgo.dto.response.AccountResponse;
-import tutorgo.com.tutorgo.model.Account;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import tutorgo.com.tutorgo.dto.request.CreateAccountRequest;
 import tutorgo.com.tutorgo.exception.PhoneAlredyExistExecption;
 import tutorgo.com.tutorgo.mapper.AccountMapper;
-import tutorgo.com.tutorgo.model.Account;
 import tutorgo.com.tutorgo.repository.AccountRepository;
 
 @Service

@@ -1,3 +1,4 @@
+
 package tutorgo.com.tutorgo.model;
 
 import tutorgo.com.tutorgo.model.enums.AccountRoles;
@@ -44,4 +45,3 @@ public class Account {
     private String phoneNumber;
 
 }
-
