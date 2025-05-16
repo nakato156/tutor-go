@@ -1,8 +1,8 @@
-package tutorgo.com.tutorgo.mapper;
+package tutormaster.com.tutorgo.mapper;
 
-import tutorgo.com.tutorgo.dto.request.RegisterRequest;
-import tutorgo.com.tutorgo.dto.response.AccountResponse;
-import tutorgo.com.tutorgo.model.User;
+import tutormaster.com.tutorgo.dto.request.RegisterRequest;
+import tutormaster.com.tutorgo.dto.response.AccountResponse;
+import tutormaster.com.tutorgo.model.User;
 import org.springframework.stereotype.Component;
 
 @Component

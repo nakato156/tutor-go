@@ -1,13 +1,13 @@
-package tutorgo.com.tutorgo.service;
+package tutormaster.com.tutorgo.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import tutorgo.com.tutorgo.dto.request.RegisterRequest;
-import tutorgo.com.tutorgo.exception.EmailAlredyExistExecption;
-import tutorgo.com.tutorgo.mapper.AccountMapper;
-import tutorgo.com.tutorgo.model.User;
-import tutorgo.com.tutorgo.repository.UserRepository;
+import tutormaster.com.tutorgo.dto.request.RegisterRequest;
+import tutormaster.com.tutorgo.exception.EmailAlredyExistExecption;
+import tutormaster.com.tutorgo.mapper.AccountMapper;
+import tutormaster.com.tutorgo.model.User;
+import tutormaster.com.tutorgo.repository.UserRepository;
 
 @Service
 @RequiredArgsConstructor

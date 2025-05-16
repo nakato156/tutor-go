@@ -1,4 +1,4 @@
-package tutorgo.com.tutorgo.dto.response;
+package tutormaster.com.tutorgo.dto.response;
 
 import java.time.LocalDateTime;
 

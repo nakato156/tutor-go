@@ -1,7 +1,7 @@
 
-package tutorgo.com.tutorgo.model;
+package tutormaster.com.tutorgo.model;
 
-import tutorgo.com.tutorgo.model.enums.AccountRoles;
+import tutormaster.com.tutorgo.model.enums.AccountRoles;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

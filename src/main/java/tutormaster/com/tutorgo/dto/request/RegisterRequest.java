@@ -1,7 +1,7 @@
-package tutorgo.com.tutorgo.dto.request;
+package tutormaster.com.tutorgo.dto.request;
 
 import jakarta.validation.constraints.*;
-import tutorgo.com.tutorgo.model.enums.AccountRoles;
+import tutormaster.com.tutorgo.model.enums.AccountRoles;
 
 public record RegisterRequest(
         @Email String email,
