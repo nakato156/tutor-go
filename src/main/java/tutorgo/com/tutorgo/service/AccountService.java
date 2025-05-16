@@ -19,7 +19,7 @@ public class AccountService {
     @Transactional
     public void createAccount(CreateAccountRequest request) {
         if(accountRepository.existsByPhoneNumber(request.phoneNumber())){
-            throw new PhoneAlredyExistExecption("El numero de celular ya existe");
+            throw new PhoneAlredyExistExecption("Prueba. El numero de celular ya existe");
         }
     }
 
