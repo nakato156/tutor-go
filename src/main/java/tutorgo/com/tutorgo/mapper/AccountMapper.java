@@ -2,7 +2,7 @@ package tutorgo.com.tutorgo.mapper;
 
 import tutorgo.com.tutorgo.dto.request.RegisterRequest;
 import tutorgo.com.tutorgo.dto.response.AccountResponse;
-import tutorgo.com.tutorgo.model.User;
+import tutorgo.com.tutorgo.model.entity.User;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -17,7 +17,7 @@ public class AccountMapper {
                 user.getId(),
                 user.getName(),
                 user.getEmail(),
-                user.getRole() != null ? user.getRole().name() : null,
+                user.getRol() != null ? user.getRol().getNombre() : null,
                 user.getCreatedAt(),
                 user.getPhoneNumber()
         );

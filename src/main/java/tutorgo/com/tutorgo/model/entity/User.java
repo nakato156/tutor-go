@@ -1,4 +1,4 @@
-package tutorgo.com.tutorgo.model;
+package tutorgo.com.tutorgo.model.entity;
 
 import tutorgo.com.tutorgo.model.enums.AccountRoles;
 import jakarta.persistence.*;
@@ -41,9 +41,10 @@ public class User {
     @Column(nullable = false, precision = 19, scale = 4)
     private String phoneNumber;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20)
-    private AccountRoles role;
+    @ManyToOne
+    @JoinColumn(name = "rol_id", referencedColumnName = "id",
+            foreignKey = @ForeignKey(name = "FK_usuario_rol"))
+    private Rol rol;
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;

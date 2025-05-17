@@ -10,7 +10,7 @@ import tutorgo.com.tutorgo.dto.request.UpdateProfileRequest;
 import tutorgo.com.tutorgo.exception.EmailAlredyExistExecption;
 import tutorgo.com.tutorgo.exception.InvalidFieldException;
 import tutorgo.com.tutorgo.mapper.AccountMapper;
-import tutorgo.com.tutorgo.model.User;
+import tutorgo.com.tutorgo.model.entity.User;
 import tutorgo.com.tutorgo.repository.UserRepository;
 
 import java.time.LocalDateTime;
@@ -32,7 +32,7 @@ public class AccountService {
         var user = User.builder()
                 .email(request.email())
                 .password(request.password())
-                .role(request.role())
+                .rol(request.role())
                 .name(request.name())
                 .surename(request.surename())
                 .university(request.university())

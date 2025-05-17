@@ -29,7 +29,7 @@ public class Tutor {
     @OneToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id",
             foreignKey = @ForeignKey(name = "FK_tutor_usuarios"))
-    private Usuario usuario;
+    private User usuario;
 
     @OneToMany(mappedBy = "tutor", cascade = CascadeType.ALL)
     private List<Disponibilidad> disponibilidades;

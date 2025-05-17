@@ -19,7 +19,7 @@ public class Estudiante {
     @OneToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id",
             foreignKey = @ForeignKey(name = "FK_estudiante_usuarios"))
-    private Usuario usuario;
+    private User usuario;
 
     @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL)
     private List<Notificacion_Estudiante> notificaciones;
