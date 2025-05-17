@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -14,7 +15,7 @@ public class Disponibilidad {
     private Integer id;
 
     @Column(name = "fecha",nullable = false)
-    private LocalDateTime fecha;
+    private LocalDate fecha;
 
     @Column(name = "hora_inicial", nullable = false)
     private Timestamp horaInicial;
