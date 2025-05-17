@@ -30,4 +30,37 @@ public class Estudiante {
     //    UN ESTUDIANTE PUEDE TENER MUCHAS SESIONES
     @OneToMany(mappedBy = "estudiante")
     private List<Sesion> sesionesRecibidas;
+
+    // --- GETTERS Y SETTERS ---
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getCentroEstudio() {
+        return centroEstudio;
+    }
+
+    public void setCentroEstudio(String centroEstudio) {
+        this.centroEstudio = centroEstudio;
+    }
+
+    public List<Pago> getPagosRealizados() {
+        return pagosRealizados;
+    }
+
+    public void setPagosRealizados(List<Pago> pagosRealizados) {
+        this.pagosRealizados = pagosRealizados;
+    }
 }

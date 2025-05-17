@@ -1,7 +1,7 @@
 package tutormaster.com.tutorgo.model.enums;
 
-public enum TipoEstadoPago {
-    COMPLETADO,
+public enum EstadoSesion {
+    CONFIRMADO,
     PENDIENTE,
-    FALLIDO
+    COMPLETADA
 }
