@@ -58,6 +58,15 @@ public class AccountService {
         userRepository.save(user);
     }
 
+    @Transactional
+    public void deleteUser(Long userId) {
+        if (!userRepository.existsById(userId)) {
+            throw new IllegalArgumentException("Usuario no encontrado");
+        }
+        userRepository.deleteById(userId);
+    }
+
+
     public void logout(HttpSession session) {
         session.invalidate();
     }

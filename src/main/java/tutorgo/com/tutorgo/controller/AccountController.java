@@ -30,4 +30,9 @@ public class AccountController {
         return ResponseEntity.ok("Perfil actualizado con éxito");
     }
 
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long userId) {
+        accountService.deleteUser(userId);
+        return ResponseEntity.noContent().build();
+    }
 }
