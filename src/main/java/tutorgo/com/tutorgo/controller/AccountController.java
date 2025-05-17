@@ -40,4 +40,15 @@ public class AccountController {
                     .body("No se pudieron obtener las sesiones desde 2023. Error: "  + e.getMessage());
         }
     }
+
+    @GetMapping("/{estudianteId}/notificaciones")
+    public ResponseEntity<?> obtenerNotificaciones(@PathVariable Integer estudianteId) {
+        try {
+            return ResponseEntity.ok(accountService.obtenerNotificaciones(estudianteId));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error al obtener notificaciones: " + e.getMessage());
+        }
+    }
+
 }

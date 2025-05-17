@@ -89,3 +89,6 @@ CREATE TABLE IF NOT EXISTS notificacion_estudiantes (
     tipo VARCHAR(20) NOT NULL,
     estudiante_id INTEGER REFERENCES estudiantes(id)
 );
+
+ALTER TABLE notificacion_estudiantes
+    ADD COLUMN sesion_id INTEGER REFERENCES sesiones(id);

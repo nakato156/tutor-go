@@ -39,4 +39,12 @@ public interface SesionRepository extends JpaRepository<Sesion, Integer> {
     List<Sesion> findSesionesDesdeFecha(
             @Param("estudianteId") Integer estudianteId,
             @Param("fechaDesde") LocalDateTime fechaDesde);
+
+
+    @Query("SELECT s FROM Sesion s " +
+            "WHERE s.tipoEstado = 'CONFIRMADO' " +
+            "AND s.horaInicial BETWEEN :desde AND :hasta")
+    List<Sesion> findSesionesDentroDeRango(@Param("desde") LocalDateTime desde,
+                                           @Param("hasta") LocalDateTime hasta);
+
 }

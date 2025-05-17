@@ -3,10 +3,12 @@ package tutorgo.com.tutorgo.service.Impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tutorgo.com.tutorgo.model.entity.Estudiante;
+import tutorgo.com.tutorgo.model.entity.Notificacion_Estudiante;
 import tutorgo.com.tutorgo.model.entity.Sesion;
 import tutorgo.com.tutorgo.repository.EstudianteRepository;
+import tutorgo.com.tutorgo.repository.NotificacionEstudianteRepository;
 import tutorgo.com.tutorgo.repository.SesionRepository;
-import tutorgo.com.tutorgo.service.AccountService;  // Interfaz
+import tutorgo.com.tutorgo.service.AccountService;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,6 +19,7 @@ public class AccountServiceImpl implements AccountService {
 
     private final EstudianteRepository estudianteRepository;
     private final SesionRepository sesionRepository;
+    private final NotificacionEstudianteRepository notificacionEstudianteRepository;  // <--- Declara acá
 
     @Override
     public List<Sesion> obtenerSesionesDesde2023(Integer estudianteId) {
@@ -42,5 +45,11 @@ public class AccountServiceImpl implements AccountService {
         }
 
         return sesion.getEnlace().getEnlace(); // Retorna el String URL
+    }
+
+    // Nuevo método para obtener notificaciones
+    @Override
+    public List<Notificacion_Estudiante> obtenerNotificaciones(Integer estudianteId) {
+        return notificacionEstudianteRepository.findByEstudianteId(estudianteId);
     }
 }
