@@ -6,7 +6,9 @@ import tutorgo.com.tutorgo.model.enums.AccountRoles;
 
 public record RegisterRequest(
         @Email String email,
+        @Name("surename") @NotBlank String surename,
         @Name("name") @NotBlank String name,
+        @NotBlank String university,
         @NotBlank String password,
         @NotNull AccountRoles role,
         @NotBlank(message = "Phone number cannot be blank / El número de celular no puede estar vacío")

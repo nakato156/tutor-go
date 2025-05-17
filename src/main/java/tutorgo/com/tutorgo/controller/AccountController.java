@@ -12,7 +12,7 @@ import tutorgo.com.tutorgo.service.AccountService;
 @RequestMapping("/accounts")
 @RequiredArgsConstructor
 public class AccountController {
-    private final AccountService accountService;
+    private final  AccountService accountService;
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@Valid @RequestBody RegisterRequest request) {
