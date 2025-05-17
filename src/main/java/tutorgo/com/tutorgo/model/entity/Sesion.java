@@ -1,14 +1,15 @@
 package tutorgo.com.tutorgo.model.entity;
 
-import tutorgo.com.tutorgo.model.enums.TipoEstadoSesiones;
 import jakarta.persistence.*;
 import lombok.Data;
+import tutorgo.com.tutorgo.model.enums.TipoEstadoSesiones;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Date;
 
-@Data
 @Entity
+@Data
 @Table(name = "sesiones")
 public class Sesion {
     @Id

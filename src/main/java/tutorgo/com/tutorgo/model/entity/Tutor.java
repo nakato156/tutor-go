@@ -1,40 +1,40 @@
 package tutorgo.com.tutorgo.model.entity;
 
-import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.Data;
+
 import java.util.List;
 
-@Data
 @Entity
+@Data
 @Table(name = "tutores")
 public class Tutor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "tarifa_hora")
+    @Column(name = "tarifa_hora", nullable = false)
     private Integer tarifaHora;
 
-    @Column(name = "rubro", nullable = false)
+    @Column(name = "rubro", nullable = false, length = 100)
     private String rubro;
 
-    @Column(name = "bio", columnDefinition = "TEXT", nullable = false)
+    @Column(name = "bio")
     private String bio;
 
     @Column(name = "estrellas_promedio")
-    private Float estrellasPromedio;
+    private Double estrellasPromedio;
 
-    //    RELACIONES
+    // Relación con Usuario
     @OneToOne
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id",
-            foreignKey = @ForeignKey(name = "FK_tutor_usuarios"))
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "tutor", cascade = CascadeType.ALL)
     private List<Disponibilidad> disponibilidades;
 
-    // UN TUTOR PUEDE TENER MUCHAS SESIONES
     @JsonIgnore
     @OneToMany(mappedBy = "tutor", cascade = CascadeType.ALL)
     private List<Sesion> sesionesRealizadas;
