@@ -1,13 +1,20 @@
 package tutorgo.com.tutorgo.model.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import java.sql.Timestamp;
-import java.util.Date;
+import lombok.NoArgsConstructor;
 
-@Data
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "disponibilidades")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Disponibilidad {
 
     @Id
@@ -15,13 +22,13 @@ public class Disponibilidad {
     private Integer id;
 
     @Column(name = "fecha", nullable = false)
-    private Timestamp fecha;
+    private LocalDate fecha;
 
     @Column(name = "hora_inicial", nullable = false)
-    private Timestamp horaInicial;
+    private LocalDateTime horaInicial;
 
     @Column(name = "hora_final", nullable = false)
-    private Timestamp horaFinal;
+    private LocalDateTime horaFinal;
 
     @ManyToOne
     @JoinColumn(
@@ -31,4 +38,11 @@ public class Disponibilidad {
             foreignKey = @ForeignKey(name = "FK_disponibilidad_tutor")
     )
     private Tutor tutor;
+
+    @Transient
+    private boolean disponible = true;
+
+    public boolean isDisponible() {
+        return disponible;
+    }
 }

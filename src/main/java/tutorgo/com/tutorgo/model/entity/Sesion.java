@@ -1,48 +1,82 @@
 package tutorgo.com.tutorgo.model.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import tutorgo.com.tutorgo.model.enums.TipoEstadoSesiones;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
-@Data
 @Table(name = "sesiones")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Sesion {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sesion_id_seq_gen")
+    @SequenceGenerator(name = "sesion_id_seq_gen", sequenceName = "sesion_id_seq", allocationSize = 1)
+    @Column(name = "id")
     private Integer id;
 
     @Column(name = "fecha", nullable = false)
     private LocalDateTime fecha;
 
     @Column(name = "hora_inicial", nullable = false)
-    private Timestamp horaInicial;
+    private LocalDateTime horaInicial;
 
     @Column(name = "hora_final", nullable = false)
-    private Timestamp horaFinal;
+    private LocalDateTime horaFinal;
 
-    //    ENUMS
     @Enumerated(EnumType.STRING)
-    @Column(name = "tipo_estado")
+    @Column(name = "tipo_estado", nullable = false, length = 20)
     private TipoEstadoSesiones tipoEstado;
 
-    //    RELACIONES
-//    UN TUTOR PUEDE TENER MUCHAS SESIONES
     @ManyToOne
     @JoinColumn(name = "tutor_id", nullable = false, referencedColumnName = "id",
             foreignKey = @ForeignKey(name = "FK_sesion_tutor"))
     private Tutor tutor;
-    //    UN ESTUDIANTE PUEDE TENER MUCHAS SESIONES
+
     @ManyToOne
     @JoinColumn(name = "estudiante_id", nullable = false, referencedColumnName = "id",
             foreignKey = @ForeignKey(name = "FK_sesion_estudiante"))
     private Estudiante estudiante;
 
-    //    UN ENLACE POR SESION
-    @OneToOne(mappedBy = "sesion", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "sesion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private EnlaceSesion enlace;
+    
+    @PrePersist
+    protected void onCreate() {
+        if (this.tipoEstado == null) {
+            this.tipoEstado = TipoEstadoSesiones.PENDIENTE;
+        }
+        
+        if (this.fecha == null && this.horaInicial != null) {
+            this.fecha = this.horaInicial; // Asignar fecha basada en hora inicial si está disponible
+        } else if (this.fecha == null) {
+            this.fecha = LocalDateTime.now();
+        }
+        
+        // Asegurarse que las horas no sean nulas
+        if (this.horaInicial == null) {
+            this.horaInicial = this.fecha;
+        }
+        
+        if (this.horaFinal == null) {
+            this.horaFinal = this.horaInicial.plusHours(1);
+        }
+    }
+    
+    // Método helper para establecer el enlace manteniendo la coherencia bidireccional
+    public void setEnlaceSesion(EnlaceSesion enlaceSesion) {
+        this.enlace = enlaceSesion;
+        if (enlaceSesion != null && enlaceSesion.getSesion() != this) {
+            enlaceSesion.setSesion(this);
+        }
+    }
 }

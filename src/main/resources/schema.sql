@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS disponibilidades (
 -- Tabla Sesiones
 CREATE TABLE IF NOT EXISTS sesiones (
     id SERIAL PRIMARY KEY,
-    fecha DATE NOT NULL,
+    fecha TIMESTAMP NOT NULL,
     hora_inicial TIMESTAMP NOT NULL,
     hora_final TIMESTAMP NOT NULL,
     tipo_estado VARCHAR(20) NOT NULL,
