@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1/sesiones/{sesionId}/resenas")
+@RequestMapping("/sesiones/{sesionId}/resenas")
 // @RequiredArgsConstructor // Comentado o eliminado
 public class ResenaController {
 

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1/sesiones/{sesionId}/enlaces")
+@RequestMapping("/sesiones/{sesionId}/enlaces")
 public class EnlaceSesionController {
 
     private final EnlaceSesionService enlaceSesionService;
