@@ -93,26 +93,26 @@ public class ResenaService {
 
     private void actualizarPromedioEstrellasTutor(Tutor tutor) {
         Usuario tutorUsuario = tutor.getUsuario();
-        if (tutorUsuario == null || tutorUsuario.getSesionesComoTutor() == null) {
-            tutor.setEstrellasPromedio(0.0f);
-            tutorRepository.save(tutor);
-            return;
-        }
+//        if (tutorUsuario == null || tutorUsuario.getSesionesComoTutor() == null) {
+//            tutor.setEstrellasPromedio(0.0f);
+//            tutorRepository.save(tutor);
+//            return;
+//        }
+//
+//        List<Resena> resenasDelTutor = tutorUsuario.getSesionesComoTutor().stream()
+//                .map(Sesion::getResena) // Obtenemos la reseña de cada sesión del tutor
+//                .filter(Objects::nonNull)
+//                .toList();
 
-        List<Resena> resenasDelTutor = tutorUsuario.getSesionesComoTutor().stream()
-                .map(Sesion::getResena) // Obtenemos la reseña de cada sesión del tutor
-                .filter(Objects::nonNull)
-                .toList();
-
-        if (!resenasDelTutor.isEmpty()) {
-            double promedio = resenasDelTutor.stream()
-                    .mapToInt(Resena::getCalificacion)
-                    .average()
-                    .orElse(0.0);
-            tutor.setEstrellasPromedio((float) Math.round(promedio * 10.0) / 10.0f);
-        } else {
-            tutor.setEstrellasPromedio(0.0f);
-        }
+//        if (!resenasDelTutor.isEmpty()) {
+//            double promedio = resenasDelTutor.stream()
+//                    .mapToInt(Resena::getCalificacion)
+//                    .average()
+//                    .orElse(0.0);
+//            tutor.setEstrellasPromedio((float) Math.round(promedio * 10.0) / 10.0f);
+//        } else {
+//            tutor.setEstrellasPromedio(0.0f);
+//        }
         tutorRepository.save(tutor);
     }
 }

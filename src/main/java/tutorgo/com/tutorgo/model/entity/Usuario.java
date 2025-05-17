@@ -35,11 +35,11 @@ public class Usuario {
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
     private Estudiante estudiante;
 
-    @OneToMany(mappedBy = "tutorUsuario", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Sesion> sesionesComoTutor;
-
-    @OneToMany(mappedBy = "estudianteUsuario", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Sesion> sesionesComoEstudiante;
+//    @OneToMany(mappedBy = "tutorUsuario", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Sesion> sesionesComoTutor;
+//
+//    @OneToMany(mappedBy = "estudianteUsuario", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Sesion> sesionesComoEstudiante;
 
     // --- GETTERS Y SETTERS MANUALES ---
     public Integer getId() {
@@ -106,19 +106,19 @@ public class Usuario {
         this.estudiante = estudiante;
     }
 
-    public List<Sesion> getSesionesComoTutor() {
-        return sesionesComoTutor;
-    }
-
-    public void setSesionesComoTutor(List<Sesion> sesionesComoTutor) {
-        this.sesionesComoTutor = sesionesComoTutor;
-    }
-
-    public List<Sesion> getSesionesComoEstudiante() {
-        return sesionesComoEstudiante;
-    }
-
-    public void setSesionesComoEstudiante(List<Sesion> sesionesComoEstudiante) {
-        this.sesionesComoEstudiante = sesionesComoEstudiante;
-    }
+//    public List<Sesion> getSesionesComoTutor() {
+//        return sesionesComoTutor;
+//    }
+//
+//    public void setSesionesComoTutor(List<Sesion> sesionesComoTutor) {
+//        this.sesionesComoTutor = sesionesComoTutor;
+//    }
+//
+//    public List<Sesion> getSesionesComoEstudiante() {
+//        return sesionesComoEstudiante;
+//    }
+//
+//    public void setSesionesComoEstudiante(List<Sesion> sesionesComoEstudiante) {
+//        this.sesionesComoEstudiante = sesionesComoEstudiante;
+//    }
 }
