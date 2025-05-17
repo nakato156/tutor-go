@@ -28,6 +28,6 @@ public class Estudiante {
     private List<Pago> pagosRealizados;
 
     //    UN ESTUDIANTE PUEDE TENER MUCHAS SESIONES
-    @OneToMany(mappedBy = "estudiante")
+    @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Sesion> sesionesRecibidas;
 }
