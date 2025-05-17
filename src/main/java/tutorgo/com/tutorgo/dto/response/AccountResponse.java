@@ -1,12 +1,11 @@
 package tutorgo.com.tutorgo.dto.response;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 public record AccountResponse(
-    Long id,
-    String name,
-    String email,
-    String role,
-    LocalDateTime createdAt,
-    String phoneNumber
+        Integer id,
+        String nombre,
+        String email,
+        String rolNombre,
+        Timestamp fechaCreacion
 ) {}

@@ -1,3 +1,7 @@
+-- Limpiar todas las tablas existentes
+TRUNCATE TABLE notificacion_estudiantes, pagos, resenas, enlaces_sesiones, sesiones, disponibilidades, 
+              estudiantes, tutores, usuarios, roles RESTART IDENTITY CASCADE;
+
 -- Tabla Roles
 INSERT INTO roles (id, nombre)
 VALUES (1, 'Administrador'),
