@@ -10,7 +10,9 @@ import tutorgo.com.tutorgo.dto.request.UpdateProfileRequest;
 import tutorgo.com.tutorgo.exception.EmailAlredyExistExecption;
 import tutorgo.com.tutorgo.exception.InvalidFieldException;
 import tutorgo.com.tutorgo.mapper.AccountMapper;
+import tutorgo.com.tutorgo.model.entity.Rol;
 import tutorgo.com.tutorgo.model.entity.User;
+import tutorgo.com.tutorgo.repository.RolRepository;
 import tutorgo.com.tutorgo.repository.UserRepository;
 
 import java.time.LocalDateTime;
@@ -22,6 +24,7 @@ public class AccountService {
 
     private final UserRepository userRepository;
     private final AccountMapper accountMapper;
+    private final RolRepository rolRepository;
 
     @Transactional
     public void register(RegisterRequest request) {
@@ -29,14 +32,20 @@ public class AccountService {
             throw new EmailAlredyExistExecption("El email ya está en uso");
         }
 
+        // Buscamos el rol "ALUMNO" en la BD
+        Rol rolUser = rolRepository
+                .findByNombre(request.rol())
+                .orElseThrow(() -> new IllegalStateException("No existe el rol ALUMNO"));
+
         var user = User.builder()
                 .email(request.email())
                 .password(request.password())
-                .rol(request.role())
+                .rol(rolUser)
                 .name(request.name())
                 .surename(request.surename())
                 .university(request.university())
                 .phoneNumber(request.phoneNumber())
+                .updatedAt(LocalDateTime.now())
                 .createdAt(LocalDateTime.now())
                 .build();
 

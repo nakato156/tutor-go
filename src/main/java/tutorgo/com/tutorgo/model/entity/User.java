@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "accounts", uniqueConstraints = {
+@Table(name = "usuarios", uniqueConstraints = {
         @UniqueConstraint(columnNames = "phoneNumber", name = "uk_account_phone_number")
 })
 @Data
@@ -46,10 +46,10 @@ public class User {
             foreignKey = @ForeignKey(name = "FK_usuario_rol"))
     private Rol rol;
 
-    @Column(nullable = false, updatable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @Column(nullable = false)
+    @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
 }
