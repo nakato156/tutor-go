@@ -23,22 +23,22 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false, length = 15)
+    @Column(unique = true, nullable = false, length = 50)
     private String email;
 
-    @Column(nullable = false, length = 15)
+    @Column(nullable = false, length = 50)
     private String name;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 50)
     private String surename;
 
-    @Column(nullable = false, length = 15)
+    @Column(nullable = false, length = 55)
     private String university;
 
-    @Column(nullable = false, length = 15)
+    @Column(nullable = false, length = 55)
     private String password;
 
-    @Column(nullable = false, precision = 19, scale = 4)
+    @Column(nullable = false, length = 15)
     private String phoneNumber;
 
     @ManyToOne
