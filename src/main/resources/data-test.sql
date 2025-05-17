@@ -2,7 +2,8 @@
 INSERT INTO roles (id, nombre)
 VALUES (1, 'Administrador'),
        (2, 'Tutor'),
-       (3, 'Estudiante');
+       (3, 'Estudiante')
+ON CONFLICT (id) DO NOTHING;
 
 -- Tabla Usuarios
 INSERT INTO usuarios (id, nombre, email, pasword_hash, foto_url, hora_creacion, hora_actualizacion, rol_id)
@@ -105,7 +106,8 @@ VALUES (1, 'Juan Pérez', 'juan.perez@email.com', 'hashed123', 'https://fotos.co
        (49, 'René Cervantes', 'rene.cervantes@email.com', 'hashed567',
         'https://fotos.com/rene.jpg', '2023-02-18 10:00:00', '2023-02-19 11:00:00', 3),
        (50, 'Gladys León', 'gladys.leon@email.com', 'hashed890',
-        'https://fotos.com/gladys.jpg', '2023-02-19 09:00:00', '2023-02-20 10:00:00', 2);
+        'https://fotos.com/gladys.jpg', '2023-02-19 09:00:00', '2023-02-20 10:00:00', 2)
+ON CONFLICT (id) DO NOTHING;
 
 -- Tabla Tutores
 INSERT INTO tutores (id, tarifa_hora, rubro, bio, estrellas_promedio, usuario_id)
@@ -128,7 +130,8 @@ VALUES (1, 50, 'Matemáticas', 'Tutor con 10 años de experiencia en matemática
        (17, 50, 'Geografía', 'Geógrafo con experiencia en sistemas de información', 4.7, 34),
        (18, 45, 'Astronomía', 'Astrónomo aficionado con amplio conocimiento', 4.6, 36),
        (19, 55, 'Marketing', 'Especialista en marketing digital y redes sociales', 4.8, 38),
-       (20, 60, 'Finanzas', 'Experto en finanzas personales y corporativas', 4.9, 40);
+       (20, 60, 'Finanzas', 'Experto en finanzas personales y corporativas', 4.9, 40)
+ON CONFLICT (id) DO NOTHING;
 
 -- Tabla Estudiantes
 INSERT INTO estudiantes (id, centro_estudio, usuario_id)
@@ -160,7 +163,8 @@ VALUES (1, 'Universidad Nacional Autónoma de México', 3),
        (26, 'Universidad Autónoma de Campeche', 44),
        (27, 'Universidad Autónoma de Ciudad Juárez', 46),
        (28, 'Universidad Autónoma de Quintana Roo', 48),
-       (29, 'Universidad Autónoma de Nayarit', 50);
+       (29, 'Universidad Autónoma de Nayarit', 50)
+ON CONFLICT (id) DO NOTHING;
 
 -- Tabla Disponibilidades
 INSERT INTO disponibilidades (id, fecha, hora_inicial, hora_final, tutor_id)
@@ -213,7 +217,8 @@ VALUES (1, '2023-03-01', '2023-03-01 09:00:00', '2023-03-01 11:00:00', 1),
        (47, '2023-03-24', '2023-03-24 11:00:00', '2023-03-24 13:00:00', 4),
        (48, '2023-03-24', '2023-03-24 16:00:00', '2023-03-24 18:00:00', 4),
        (49, '2023-03-25', '2023-03-25 09:00:00', '2023-03-25 11:00:00', 5),
-       (50, '2023-03-25', '2023-03-25 14:00:00', '2023-03-25 16:00:00', 5);
+       (50, '2023-03-25', '2023-03-25 14:00:00', '2023-03-25 16:00:00', 5)
+ON CONFLICT (id) DO NOTHING;
 
 -- Tabla Sesiones
 INSERT INTO sesiones (id, fecha, hora_inicial, hora_final, tipo_estado, tutor_id, estudiante_id)
@@ -266,7 +271,8 @@ VALUES (1, '2023-03-01', '2023-03-01 09:00:00', '2023-03-01 11:00:00', 'COMPLETA
        (47, '2023-03-24', '2023-03-24 11:00:00', '2023-03-24 13:00:00', 'PENDIENTE', 4, 18),
        (48, '2023-03-24', '2023-03-24 16:00:00', '2023-03-24 18:00:00', 'PENDIENTE', 4, 19),
        (49, '2023-03-25', '2023-03-25 09:00:00', '2023-03-25 11:00:00', 'PENDIENTE', 5, 20),
-       (50, '2023-03-25', '2023-03-25 14:00:00', '2023-03-25 16:00:00', 'PENDIENTE', 5, 21);
+       (50, '2023-03-25', '2023-03-25 14:00:00', '2023-03-25 16:00:00', 'PENDIENTE', 5, 21)
+ON CONFLICT (id) DO NOTHING;
 
 -- Tabla Enlaces_Sesiones
 INSERT INTO enlaces_sesiones (id, nombre, enlace, sesion_id)
@@ -319,7 +325,8 @@ VALUES (1, 'Sesión Matemáticas 1', 'https://meet.google.com/abc123', 1),
        (47, 'Sesión Enfermería 1', 'https://meet.google.com/f5g6h7', 47),
        (48, 'Sesión Enfermería 2', 'https://meet.google.com/i8j9k0', 48),
        (49, 'Sesión Agricultura 1', 'https://meet.google.com/l1m2n3', 49),
-       (50, 'Sesión Agricultura 2', 'https://meet.google.com/o4p5q6', 50);
+       (50, 'Sesión Agricultura 2', 'https://meet.google.com/o4p5q6', 50)
+ON CONFLICT (id) DO NOTHING;
 
 -- Tabla Resenas
 INSERT INTO resenas (id, calificacion, comentario, sesion_id)
@@ -372,7 +379,8 @@ VALUES (1, 5, 'Excelente tutor, explicó muy claro los conceptos', 1),
        (47, 5, 'Totalmente satisfecho con la sesión', 47),
        (48, 1, 'Mala experiencia, no volvería a contratar', 48),
        (49, 5, 'Tutor excepcional, muy recomendado', 49),
-       (50, 4, 'Buen tutor, pero debería mejorar la conexión', 50);
+       (50, 4, 'Buen tutor, pero debería mejorar la conexión', 50)
+ON CONFLICT (id) DO NOTHING;
 
 -- Tabla Pagos
 INSERT INTO pagos (id, monto, comision_plataforma, fecha, metodo_pago, tipo_estado, estudiante_id, tutor_id)
@@ -425,7 +433,8 @@ VALUES (1, 100.00, 15.00, '2023-03-01 11:30:00', 'TARJETA_CREDITO', 'COMPLETADO'
        (47, 80.00, 12.00, '2023-03-24 13:30:00', 'PAYPAL', 'FALLIDO', 18, 4),
        (48, 80.00, 12.00, '2023-03-24 18:30:00', 'TRANSFERENCIA', 'FALLIDO', 19, 4),
        (49, 100.00, 15.00, '2023-03-25 11:30:00', 'TARJETA_CREDITO', 'FALLIDO', 20, 5),
-       (50, 100.00, 15.00, '2023-03-25 16:30:00', 'PAYPAL', 'FALLIDO', 21, 5);
+       (50, 100.00, 15.00, '2023-03-25 16:30:00', 'PAYPAL', 'FALLIDO', 21, 5)
+ON CONFLICT (id) DO NOTHING;
 
 -- Tabla Notificacion_estudiantes
 INSERT INTO notificacion_estudiantes (id, titulo, texto, tipo, estudiante_id)
@@ -479,4 +488,5 @@ VALUES
     (47, 'Sesión completada', 'Tu sesión de Enfermería ha sido completada. Por favor deja tu reseña', 'CONFIRMACION', 18),
     (48, 'Pago recibido', 'Hemos recibido tu pago por la sesión de Enfermería', 'PAGO', 19),
     (49, 'Nueva sesión programada', 'Tu sesión de Agricultura ha sido programada para el 25/03/2023', 'CONFIRMACION', 20),
-    (50, 'Recordatorio de sesión', 'No olvides tu sesión de Agricultura hoy a las 09:00', 'RECORDATORIO', 21);
+    (50, 'Recordatorio de sesión', 'No olvides tu sesión de Agricultura hoy a las 09:00', 'RECORDATORIO', 21)
+ON CONFLICT (id) DO NOTHING;
